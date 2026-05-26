@@ -17,11 +17,11 @@ class Tarefa extends ItemTrabalho{
   });
 
   Tarefa.fromMap(Map<String, dynamic> map)
-      : responsavel = map['responsavel'] ?? 'Sem responsável',
-        status = map['status'],
-        prioridade = map['prioridade'],
-        valor = map['valor'],
-        horas = map['horas'],
+      : responsavel = map['responsavel'] ?? 'Não informado',
+        status = map['status'] ?? 'sem status',
+        prioridade = map['prioridade'] ?? 'sem prioridade',
+        valor = map['valor'] ?? 0.0,
+        horas = map['horas'] ?? 0,
         super.fromMap(map);
 }
 
@@ -38,6 +38,6 @@ class ItemTrabalho {
 
 ItemTrabalho.fromMap(Map<String, dynamic> map)
 : id = map['id'],
-titulo = map['titulo'];
+titulo = map['titulo'] ?? 'Sem título';
 
 }
