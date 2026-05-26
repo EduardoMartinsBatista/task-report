@@ -83,4 +83,53 @@ print('Tarefas convertidas:');
   print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
 
 }
+
+List<Tarefa> tarefasConcluidas = tarefasConvertidas
+.where((tarefa) => tarefa.status == 'concluida').toList();
+
+print('Tarefas concluidas:');
+  if(tarefasConcluidas.isEmpty){
+    print('Nenhuma tarefa concluída encontrada.');
+  } else {
+    for (var tarefa in tarefasConcluidas) {
+      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+    }
+  }
+
+List<Tarefa> tarefasEmAndamento = tarefasConvertidas
+.where((tarefa) => tarefa.status == 'em andamento').toList();
+
+print('Tarefas em andamento:');
+  if(tarefasEmAndamento.isEmpty){
+    print('Nenhuma tarefa em andamento encontrada.');
+  } else {
+    for (var tarefa in tarefasEmAndamento) {
+      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+    }
+  }
+
+List<Tarefa> tarefasPendentes = tarefasConvertidas
+.where((tarefa) => tarefa.status == 'pendente').toList();
+
+print('Tarefas pendentes:');
+  if(tarefasPendentes.isEmpty){
+    print('Nenhuma tarefa pendente encontrada.');
+  } else {
+    for (var tarefa in tarefasPendentes) {
+      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+    }
+  }
+
+List<Tarefa> tarefasCanceladas = tarefasConvertidas
+.where((tarefa) => tarefa.status == 'cancelada').toList();
+
+print('Tarefas canceladas:');
+  if(tarefasCanceladas.isEmpty){
+    print('Nenhuma tarefa cancelada encontrada.');
+  } else {
+    for (var tarefa in tarefasCanceladas) {
+      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+    }
+  }
+
 }
