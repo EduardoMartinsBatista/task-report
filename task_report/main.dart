@@ -17,9 +17,9 @@ class Tarefa extends ItemTrabalho{
   });
 
   Tarefa.fromMap(Map<String, dynamic> map)
-      : responsavel = map['responsavel'] ?? 'Não informado',
-        status = map['status'] ?? 'sem status',
-        prioridade = map['prioridade'] ?? 'sem prioridade',
+      : responsavel = (map['responsavel'] ?? 'Não informado').toString().trim(),
+        status = (map['status'] ?? 'sem status').toString().trim(),
+        prioridade = (map['prioridade'] ?? 'sem prioridade').toString().trim(),
         valor = map['valor'] ?? 0.0,
         horas = map['horas'] ?? 0,
         super.fromMap(map);
@@ -38,6 +38,20 @@ class ItemTrabalho {
 
 ItemTrabalho.fromMap(Map<String, dynamic> map)
 : id = map['id'],
-titulo = map['titulo'] ?? 'Sem título';
+titulo = (map['titulo'] ?? 'Sem título').toString().trim();
 
+}
+
+double conveterValor(dynamic valor){
+
+  if (valor == null) {
+    return 0.0;
+  }
+
+
+  String valorTexto = valor.toString(){
+
+  valorTexto = valorTexto.replaceAll('R\$', '').replaceAll(',', '.').replaceAll(' ', '');
+  return converterValor;
+}
 }
