@@ -1,3 +1,5 @@
+import 'database.dart';
+
 class Tarefa extends ItemTrabalho{
  
   String responsavel;
@@ -20,14 +22,14 @@ class Tarefa extends ItemTrabalho{
       : responsavel = (map['responsavel'] ?? 'Não informado').toString().trim(),
         status = (map['status'] ?? 'sem status').toString().trim(),
         prioridade = (map['prioridade'] ?? 'sem prioridade').toString().trim(),
-        valor = map['valor'] ?? 0.0,
-        horas = map['horas'] ?? 0,
+        valor = converterValor(map['valor']),
+        horas = converterHoras(map['horas']),
         super.fromMap(map);
 }
 
 class ItemTrabalho {
 
-  String id;
+  int id;
   String titulo;
 
   ItemTrabalho ({
@@ -42,16 +44,43 @@ titulo = (map['titulo'] ?? 'Sem título').toString().trim();
 
 }
 
-double conveterValor(dynamic valor){
+double converterValor(dynamic valor){
 
-  if (valor == null) {
+  if (valor == null || valor.toString().isEmpty){
     return 0.0;
   }
 
+  String valorTexto = valor.toString();
 
-  String valorTexto = valor.toString(){
+  valorTexto = valorTexto.replaceAll('R\$', '');
+  valorTexto = valorTexto.replaceAll(',', '.');
+  valorTexto = valorTexto.replaceAll(' ', '');
+  return double.tryParse(valorTexto) ?? 0.0;
+}
 
-  valorTexto = valorTexto.replaceAll('R\$', '').replaceAll(',', '.').replaceAll(' ', '');
-  return converterValor;
+int converterHoras(dynamic horas) {
+  
+  if (horas == null) {
+    return 0;
+  }
+
+  return int.tryParse(horas.toString()) ?? 0;
+}
+
+void main(){
+
+  List<Tarefa> tarefasConvertidas = [];
+
+  for (var tarefaMap in dadosTarefas) {
+    Tarefa novaTarefa = Tarefa.fromMap(tarefaMap);
+
+    tarefasConvertidas.add(novaTarefa);
+}
+
+print('Tarefas convertidas:');
+
+  for (var tarefa in tarefasConvertidas) {
+  print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+
 }
 }
