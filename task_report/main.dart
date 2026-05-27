@@ -79,10 +79,10 @@ void main(){
     tarefasConvertidas.add(novaTarefa);
 }
 
-print('Tarefas convertidas:');
+print('---- Tarefas convertidas: ----');
 
   for (var tarefa in tarefasConvertidas) {
-  print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+  print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}\n');
 
 }
 
@@ -91,48 +91,48 @@ print('Tarefas convertidas:');
 List<Tarefa> tarefasConcluidas = tarefasConvertidas
 .where((tarefa) => tarefa.status == 'concluida').toList();
 
-print('Tarefas concluidas:');
+print('--- Tarefas concluidas:----');
   if(tarefasConcluidas.isEmpty){
     print('Nenhuma tarefa concluída encontrada.');
   } else {
     for (var tarefa in tarefasConcluidas) {
-      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}\n');
     }
   }
 
 List<Tarefa> tarefasEmAndamento = tarefasConvertidas
 .where((tarefa) => tarefa.status == 'em andamento').toList();
 
-print('Tarefas em andamento:');
+print('--- Tarefas em andamento:---');
   if(tarefasEmAndamento.isEmpty){
     print('Nenhuma tarefa em andamento encontrada.');
   } else {
     for (var tarefa in tarefasEmAndamento) {
-      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}\n');
     }
   }
 
 List<Tarefa> tarefasPendentes = tarefasConvertidas
 .where((tarefa) => tarefa.status == 'pendente').toList();
 
-print('Tarefas pendentes:');
+print('--- Tarefas pendentes:---');
   if(tarefasPendentes.isEmpty){
     print('Nenhuma tarefa pendente encontrada.');
   } else {
     for (var tarefa in tarefasPendentes) {
-      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}\n');
     }
   }
 
 List<Tarefa> tarefasCanceladas = tarefasConvertidas
 .where((tarefa) => tarefa.status == 'cancelada').toList();
 
-print('Tarefas canceladas:');
+print('--- Tarefas canceladas:---');
   if(tarefasCanceladas.isEmpty){
     print('Nenhuma tarefa cancelada encontrada.');
   } else {
     for (var tarefa in tarefasCanceladas) {
-      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
+      print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}\n');
     }
   }
 
@@ -144,7 +144,7 @@ for (var tarefa in tarefasConcluidas){
 
   valorTotalConcluidas += tarefa.valor;
 }
-print('Valor total das tarefas concluídas: R\$ ${valorTotalConcluidas.toStringAsFixed(2)}');
+print('Valor total das tarefas concluídas: R\$ ${valorTotalConcluidas.toStringAsFixed(2)}\n');
 
 // Calculando a média do valor das tarefas pendentes
 
@@ -157,7 +157,7 @@ for (var tarefa in tarefasPendentes){
 double mediaValorPendentes = 0.0;
 
 mediaValorPendentes = tarefasPendentes.isNotEmpty ? valorTotalPendentes / tarefasPendentes.length : 0.0;
-print('Média do valor das tarefas pendentes: R\$ ${mediaValorPendentes.toStringAsFixed(2)}');
+print('Média do valor das tarefas pendentes: R\$ ${mediaValorPendentes.toStringAsFixed(2)}\n');
 
 // Calculo de horas por status de tarefa
 
@@ -180,11 +180,21 @@ int horasCanceladas = 0;
 for (var tarefa in tarefasCanceladas){
   horasCanceladas += tarefa.horas;}
 
-print('Horas totais por staus: concluídas: ${horasConcluidas} horas; em andamento: ${horasEmAndamento} horas; pendentes: ${horasPendentes} horas; canceladas: ${horasCanceladas} horas.');
+print('Horas totais por staus: \n Concluídas: ${horasConcluidas} horas;\n Em andamento: ${horasEmAndamento} horas; \n Pendentes: ${horasPendentes} horas; \n Canceladas: ${horasCanceladas} horas.\n');
 
+// Encontrando tarefas com valores nulos
 
+print('\n--- TAREFAS COM DADOS INCOMPLETOS ---');
 
+  for (var mapa in dadosTarefas) {
+    List<String> problemas = [];
 
+    if (mapa['titulo'] == null) problemas.add('título ausente');
+    if (mapa['responsavel'] == null) problemas.add('responsável ausente');
+    if (mapa['horas'] == null) problemas.add('horas ausentes');
+    if (mapa['status'] == null || mapa['status'].toString().trim().isEmpty) problemas.add('status vazio');
 
-
-}
+    if (problemas.isNotEmpty) {
+      print('- ID ${mapa['id']}: ${problemas.join(' ou ')}');
+    }
+}}
