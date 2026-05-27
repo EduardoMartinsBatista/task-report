@@ -67,6 +67,17 @@ int converterHoras(dynamic horas) {
   return int.tryParse(horas.toString()) ?? 0;
 }
 
+class RelatorioTarefas {
+ 
+ final List<Tarefa> _tarefas;
+
+ RelatorioTarefas(this._tarefas);
+
+ int get totalTarefas => _tarefas.length;
+
+ int contarPorStatus(String status) => _tarefas.where((tarefa) => tarefa.status == status).length;
+  }
+
 void main(){
 
   // Convertendo os dados do banco para objetos Tarefa
@@ -205,5 +216,29 @@ for (var tarefa in tarefasConvertidas){
   statusUnicos.add(tarefa.status);}
 
   print('\nStatus únicos encontrados: ${statusUnicos.join(', ')}');
+
+
+// Criação do relatório final
+
+print('\n--- RELATÓRIO FINAL ---\n');
+print('Total de tarefas: ${tarefasConvertidas.length}\n');
+print('Tarefas por status:');
+print('Concluídas: ${tarefasConcluidas.length}');
+print('Em andamento: ${tarefasEmAndamento.length}');
+print('Pendentes: ${tarefasPendentes.length}');
+print('Canceladas: ${tarefasCanceladas.length}\n');
+print('Valor total das tarefas concluídas: R\$ ${valorTotalConcluidas.toStringAsFixed(2)}\n');
+print('Média do valor das tarefas pendentes: R\$ ${mediaValorPendentes.toStringAsFixed(2)}\n');
+print('Horas totais em tarefas concluídas: ${horasConcluidas} horas\n');
+print('Status únicos encontrados: ${statusUnicos.join(', ')}\n');
+print('Tarefas com dados incompletos:');
+for (var mapa in dadosTarefas) {
+    if (mapa['titulo'] == null || mapa['responsavel'] == null || mapa['horas'] == null) {
+      print('ID ${mapa['id']} - ${mapa['titulo'] ?? "Sem título"}');}
+
+
+}
+
+
 
 }
