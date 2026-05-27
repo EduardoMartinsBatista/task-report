@@ -69,6 +69,8 @@ int converterHoras(dynamic horas) {
 
 void main(){
 
+  // Convertendo os dados do banco para objetos Tarefa
+
   List<Tarefa> tarefasConvertidas = [];
 
   for (var tarefaMap in dadosTarefas) {
@@ -83,6 +85,8 @@ print('Tarefas convertidas:');
   print('ID: ${tarefa.id}, Título: ${tarefa.titulo}, Responsável: ${tarefa.responsavel}, Status: ${tarefa.status}, Prioridade: ${tarefa.prioridade}, Valor: R\$ ${tarefa.valor.toStringAsFixed(2)}, Horas: ${tarefa.horas}');
 
 }
+
+// Filtrando as tarefas por status
 
 List<Tarefa> tarefasConcluidas = tarefasConvertidas
 .where((tarefa) => tarefa.status == 'concluida').toList();
@@ -132,6 +136,8 @@ print('Tarefas canceladas:');
     }
   }
 
+// Calculando o valor total das tarefas concluídas
+
 double valorTotalConcluidas = 0.0;
 
 for (var tarefa in tarefasConcluidas){
@@ -140,6 +146,7 @@ for (var tarefa in tarefasConcluidas){
 }
 print('Valor total das tarefas concluídas: R\$ ${valorTotalConcluidas.toStringAsFixed(2)}');
 
+// Calculando a média do valor das tarefas pendentes
 
 double valorTotalPendentes = 0.0;
 for (var tarefa in tarefasPendentes){
@@ -151,5 +158,33 @@ double mediaValorPendentes = 0.0;
 
 mediaValorPendentes = tarefasPendentes.isNotEmpty ? valorTotalPendentes / tarefasPendentes.length : 0.0;
 print('Média do valor das tarefas pendentes: R\$ ${mediaValorPendentes.toStringAsFixed(2)}');
+
+// Calculo de horas por status de tarefa
+
+int horasConcluidas = 0;
+for (var tarefa in tarefasConcluidas){
+
+  horasConcluidas += tarefa.horas;
+}
+
+int horasEmAndamento = 0;
+for (var tarefa in tarefasEmAndamento){
+
+  horasEmAndamento += tarefa.horas;}
+
+int horasPendentes = 0;
+for (var tarefa in tarefasPendentes){
+  horasPendentes += tarefa.horas;}
+
+int horasCanceladas = 0;
+for (var tarefa in tarefasCanceladas){
+  horasCanceladas += tarefa.horas;}
+
+print('Horas totais por staus: concluídas: ${horasConcluidas} horas; em andamento: ${horasEmAndamento} horas; pendentes: ${horasPendentes} horas; canceladas: ${horasCanceladas} horas.');
+
+
+
+
+
 
 }
