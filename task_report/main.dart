@@ -132,4 +132,24 @@ print('Tarefas canceladas:');
     }
   }
 
+double valorTotalConcluidas = 0.0;
+
+for (var tarefa in tarefasConcluidas){
+
+  valorTotalConcluidas += tarefa.valor;
+}
+print('Valor total das tarefas concluídas: R\$ ${valorTotalConcluidas.toStringAsFixed(2)}');
+
+
+double valorTotalPendentes = 0.0;
+for (var tarefa in tarefasPendentes){
+
+  valorTotalPendentes += tarefa.valor;
+}
+
+double mediaValorPendentes = 0.0;
+
+mediaValorPendentes = tarefasPendentes.isNotEmpty ? valorTotalPendentes / tarefasPendentes.length : 0.0;
+print('Média do valor das tarefas pendentes: R\$ ${mediaValorPendentes.toStringAsFixed(2)}');
+
 }
