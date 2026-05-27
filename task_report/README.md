@@ -8,6 +8,8 @@ O projeto consta com a seguinte estrutura:
 - database.dart => local onde a Lista de Mapas base foi incluida
 -main.dart => local onde está todo o código do projeto. Para obter os resultados desejados, deve ser executado no VSCode ou DARTPAD.
 
+Branch com projeto finalizado: projeto-final;
+
 
 Acesso rápido aos arquivos externos:
 
