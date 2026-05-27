@@ -197,4 +197,13 @@ print('\n--- TAREFAS COM DADOS INCOMPLETOS ---');
     if (problemas.isNotEmpty) {
       print('- ID ${mapa['id']}: ${problemas.join(' ou ')}');
     }
-}}
+}
+
+Set<String> statusUnicos = {};
+
+for (var tarefa in tarefasConvertidas){
+  statusUnicos.add(tarefa.status);}
+
+  print('\nStatus únicos encontrados: ${statusUnicos.join(', ')}');
+
+}
