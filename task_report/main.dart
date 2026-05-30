@@ -82,9 +82,7 @@ class RelatorioTarefas {
  RelatorioTarefas(this._tarefas);
 
  int get totalTarefas => _tarefas.length;
-
- int contarPorStatus(String status) => _tarefas.where((tarefa) => tarefa.status == status).length;
-  }
+}
 
 void main(){
 
@@ -226,10 +224,15 @@ for (var tarefa in tarefasConvertidas){
   print('\nStatus únicos encontrados: ${statusUnicos.join(', ')}');
 
 
+// Contagem total de tarefas usando classe RelatorioTarefas
+
+var relatorio = RelatorioTarefas(tarefasConvertidas);
+
+
 // Criação do relatório final
 
 print('\n--- RELATÓRIO FINAL ---\n');
-print('Total de tarefas: ${tarefasConvertidas.length}\n');
+print('Total de tarefas: ${relatorio.totalTarefas}\n');
 print('Tarefas por status:');
 print('Concluídas: ${tarefasConcluidas.length}');
 print('Em andamento: ${tarefasEmAndamento.length}');
