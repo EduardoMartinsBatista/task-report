@@ -15,4 +15,4 @@ Acesso rápido aos arquivos externos:
 
 KANBAN: https://trello.com/invite/b/6a14d742bb9b8fba3ae92412/ATTIa98158e5bde1d686d7843d1acd2f6e1f99D34D6C/task-report
 
-Vídeo: https://drive.google.com/file/d/1Ope6jveaJLvaB-2uiK26gWXfroJWOB9s/view?usp=sharing
+Vídeo: https://drive.google.com/file/d/1rqo6FJ_sYdXL45RJyixbCL8cVaa83A6m/view?usp=sharing
