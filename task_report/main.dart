@@ -1,5 +1,25 @@
 import 'database.dart';
 
+class ItemTrabalho {
+
+  int id;
+  String titulo;
+
+  ItemTrabalho ({
+
+    required this.id,
+    required this.titulo, 
+});
+
+ItemTrabalho.fromMap(Map<String, dynamic> map)
+: id = map['id'],
+titulo = (map['titulo'] ?? 'Sem título').toString().trim();
+
+void resumo(){
+  print('ID: $id, Título: $titulo');}
+
+}
+
 class Tarefa extends ItemTrabalho{
  
   String responsavel;
@@ -25,23 +45,11 @@ class Tarefa extends ItemTrabalho{
         valor = converterValor(map['valor']),
         horas = converterHoras(map['horas']),
         super.fromMap(map);
+
+  @override
+  void resumo() {
+    print('ID: $id, Título: $titulo, Prioridade: $prioridade');
 }
-
-class ItemTrabalho {
-
-  int id;
-  String titulo;
-
-  ItemTrabalho ({
-
-    required this.id,
-    required this.titulo, 
-});
-
-ItemTrabalho.fromMap(Map<String, dynamic> map)
-: id = map['id'],
-titulo = (map['titulo'] ?? 'Sem título').toString().trim();
-
 }
 
 double converterValor(dynamic valor){
